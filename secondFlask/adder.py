@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, Response
 
 app = Flask(__name__)
 
-@app.route('/adder') 
+@app.route('/addtwo', methods=['GET']) 
 def addNums(): 
 	num1 = int(request.args['num1'])
 	num2 = int(request.args['num2'])

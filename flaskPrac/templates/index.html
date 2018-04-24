@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/processform">
+  <label for="numodds">Number of Odd Numbers</label>
+	<input type='text' name="numodds">
+  <!-- <label for="nothing">Nothing</label>
+	<input type="text" name="nothing"> -->
+  <label for="make">audi</label>
+	<input type="checkbox" name="make1" value="bmw">
+  <label for="make2">bwm</label>
+  <input type="checkbox" id="make2" name="make" value="audi">
+	<input type="submit">
+</form>
+{% endblock %}

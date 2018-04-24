@@ -1,0 +1,73 @@
+<!DOCTYPE>
+
+<html>
+	<head>
+		<title>Adder</title>
+		<meta charset="utf-8"> 
+	</head>
+
+<body>
+	<form>
+		<div class="container">
+			<div class="form-group">
+				<label for="num1">Num 1</label>
+				<input id="num1" type=text class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="num2">Num 2</label>
+				<input id="num2" type=text class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="num3">Num 3</label>
+				<input id="num3" type=text class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="num4">Num 4</label>
+				<input id="num4" type=text class="form-control">
+			</div>
+			<br>
+			<div>
+				<button type=button onclick="Add()" id="gobutt">Add Numbers</button>
+			</div>
+		</div>
+		<h1 id="output"></h1>
+	</form>
+	
+	<script>
+	function Add() {
+		let config = {};
+		let n1 = document.getElementById('num1').value
+		let n2 = document.getElementById('num2').value
+		let n3 = document.getElementById('num3').value
+		let n4 = document.getElementById('num4').value
+
+		config.method = 'POST';
+		config.body = JSON.stringify({num1: n1, num2: n2}) // must match content type
+		config.headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
+
+		fetch(`http://localhost:5001/addtwo?num1=${n1}&num2=${n2}`) // calling server, calls function below if there is a response
+		.then(function(response) {
+			console.log(response)
+			return response.json()
+		})
+			.then(function(json) {return fetch(`/addtwo?num1=${json}&num2=${n3}`) })
+			.then(function(response) {
+				console.log(response)
+				return response.json()
+			})
+				.then(function(json) {return fetch(`/addtwo?num1=${json}&num2=${n4}`) })
+				.then(function(response) {
+					console.log(response)
+					return response.json()
+				})
+		.catch(error => console.error('Error: ', error))
+		.then(function(myJson) {
+			document.getElementById("output").innerHTML = myJson;
+		})}
+		alert('hello');
+		
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Here is a list of odd numbers</p>
+<table>
+  {% for oddnum in outputodds %}
+    <tr><td>{{oddnum}}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
