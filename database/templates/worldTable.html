@@ -1,0 +1,14 @@
+<!Doctype>
+
+<html>
+	{% block content %}
+	<p>World Info</p>
+	<table>
+	  {% for tuple in data %}
+	  	{% for item in tuple %}
+			<tr><td>{{item}}</td></tr>
+	  	{% endfor %}
+	  {% endfor %}
+	</table>
+	{% endblock %}
+</html>
